@@ -63,7 +63,6 @@ namespace MultJogos
             // textSenha
             // 
             this.textSenha.CausesValidation = false;
-            this.textSenha.Enabled = false;
             this.textSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textSenha.Location = new System.Drawing.Point(435, 98);
             this.textSenha.MaxLength = 25;
@@ -101,6 +100,7 @@ namespace MultJogos
             this.btnEntrar.TabIndex = 2;
             this.btnEntrar.Text = "&Entrar";
             this.btnEntrar.UseVisualStyleBackColor = true;
+            this.btnEntrar.Click += new System.EventHandler(this.btnEntrar_Click);
             // 
             // btnSair
             // 

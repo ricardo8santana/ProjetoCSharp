@@ -14,7 +14,7 @@ namespace MultJogos
     {
         public frmSplash()
         {
-            InitializeComponent();
+           InitializeComponent();
         }
     }
 }
