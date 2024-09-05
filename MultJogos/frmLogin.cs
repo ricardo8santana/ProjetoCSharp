@@ -7,11 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace MultJogos
 {
     public partial class frmLogin : Form
     {
+        //Criando variáveis para controle do menu
+        const int MF_BYCOMMAND = 0X400;
+        [DllImport("user32")]
+        static extern int RemoveMenu(IntPtr hMenu, int nPosition, int wFlags);
+        [DllImport("user32")]
+        static extern IntPtr GetSystemMenu(IntPtr hWnd, bool bRevert);
+        [DllImport("user32")]
+        static extern int GetMenuItemCount(IntPtr hWnd);
+
         public frmLogin()
         {
             InitializeComponent();
@@ -29,7 +39,8 @@ namespace MultJogos
 
         private void btnSair_Click(object sender, EventArgs e)
         {
-            this.Close();
+            //this.Close();
+            Application.Exit();
         }
 
         private void btnEntrar_Click(object sender, EventArgs e)
@@ -41,22 +52,54 @@ namespace MultJogos
             usuario = textUsuario.Text;
             senha = textSenha.Text;
 
-            if (usuario.Equals("senac")&&senha.Equals("senac"))
+            //validando a entrada do usuário
+             if (usuario.Equals("senac")&&senha.Equals("senac"))
             {
+                //entrar no sistema
                 frmMenuPrincipal abrir = new frmMenuPrincipal();
                 abrir.Show();
                 this.Hide();
             }
+            else
+            {
+                MessageBox.Show("Usuario ou senha inválidos.", "Sistema",
+               MessageBoxButtons.OK,
+               MessageBoxIcon.Error,
+               MessageBoxDefaultButton.Button1);
+                //executando o método limpar campos
+                limparCampos();
 
+            }
+        }
+        //Limpar o método limpar campos
+        public void limparCampos()
+        {
+            textUsuario.Clear();
+            textSenha.Text = "";
+            textUsuario.Focus();
+        }
 
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            IntPtr hMenu = GetSystemMenu(this.Handle, false);
+            int MenuCount = GetMenuItemCount(hMenu) - 1;
+            RemoveMenu(hMenu, MenuCount, MF_BYCOMMAND);
+        }
 
+        private void textSenha_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                textSenha.Focus();
+            }
+        }
 
-
-            //MessageBox.Show("Bem vindo ao sistema.","Sistema",
-            //    MessageBoxButtons.YesNoCancel,
-            //    MessageBoxIcon.Error,
-            //    MessageBoxDefaultButton.Button1);
-
+        private void textUsuario_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnEntrar.Focus();
+            }
         }
     }
 }

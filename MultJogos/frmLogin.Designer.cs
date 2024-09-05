@@ -70,6 +70,7 @@ namespace MultJogos
             this.textSenha.Size = new System.Drawing.Size(206, 26);
             this.textSenha.TabIndex = 0;
             this.textSenha.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textSenha.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textSenha_KeyDown);
             // 
             // textUsuario
             // 
@@ -79,6 +80,7 @@ namespace MultJogos
             this.textUsuario.PasswordChar = 'l';
             this.textUsuario.Size = new System.Drawing.Size(206, 25);
             this.textUsuario.TabIndex = 1;
+            this.textUsuario.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textUsuario_KeyDown);
             // 
             // IblSenha
             // 
@@ -130,6 +132,7 @@ namespace MultJogos
             this.MaximizeBox = false;
             this.Name = "frmLogin";
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.frmLogin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pcbLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

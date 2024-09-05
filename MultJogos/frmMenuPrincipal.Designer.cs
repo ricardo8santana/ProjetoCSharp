@@ -81,6 +81,7 @@ namespace MultJogos
             this.btnFuncionários.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnFuncionários.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnFuncionários.UseVisualStyleBackColor = true;
+            this.btnFuncionários.Click += new System.EventHandler(this.btnFuncionários_Click);
             // 
             // btnProdutos
             // 
@@ -156,6 +157,7 @@ namespace MultJogos
             this.Name = "frmMenuPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MenuPrincipal";
+            this.Load += new System.EventHandler(this.frmMenuPrincipal_Load);
             this.ResumeLayout(false);
 
         }

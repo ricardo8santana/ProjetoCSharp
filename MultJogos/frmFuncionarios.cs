@@ -41,5 +41,12 @@ namespace MultJogos
         {
 
         }
+
+        private void btnVoltar_Click(object sender, EventArgs e)
+        {
+            frmMenuPrincipal abrir = new frmMenuPrincipal();
+            abrir.Show();
+            this.Hide();
+        }
     }
 }
