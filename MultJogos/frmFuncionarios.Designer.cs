@@ -59,6 +59,8 @@ namespace MultJogos
             this.lblNome = new System.Windows.Forms.Label();
             this.textCodigo = new System.Windows.Forms.TextBox();
             this.lblCodigo = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textNumero = new System.Windows.Forms.TextBox();
             this.pnlCRUD.SuspendLayout();
             this.gpbFuncionarios.SuspendLayout();
             this.SuspendLayout();
@@ -168,6 +170,8 @@ namespace MultJogos
             // 
             // gpbFuncionarios
             // 
+            this.gpbFuncionarios.Controls.Add(this.textNumero);
+            this.gpbFuncionarios.Controls.Add(this.label1);
             this.gpbFuncionarios.Controls.Add(this.lblCidade);
             this.gpbFuncionarios.Controls.Add(this.txtCidade);
             this.gpbFuncionarios.Controls.Add(this.lblEstado);
@@ -247,10 +251,11 @@ namespace MultJogos
             this.mskCEP.Name = "mskCEP";
             this.mskCEP.Size = new System.Drawing.Size(140, 26);
             this.mskCEP.TabIndex = 5;
+            this.mskCEP.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mskCEP_KeyDown);
             // 
             // textBairro
             // 
-            this.textBairro.Location = new System.Drawing.Point(314, 337);
+            this.textBairro.Location = new System.Drawing.Point(435, 337);
             this.textBairro.Name = "textBairro";
             this.textBairro.Size = new System.Drawing.Size(311, 26);
             this.textBairro.TabIndex = 7;
@@ -258,7 +263,7 @@ namespace MultJogos
             // lblBairro
             // 
             this.lblBairro.AutoSize = true;
-            this.lblBairro.Location = new System.Drawing.Point(314, 305);
+            this.lblBairro.Location = new System.Drawing.Point(441, 305);
             this.lblBairro.Name = "lblBairro";
             this.lblBairro.Size = new System.Drawing.Size(51, 20);
             this.lblBairro.TabIndex = 12;
@@ -363,6 +368,23 @@ namespace MultJogos
             this.lblCodigo.TabIndex = 0;
             this.lblCodigo.Text = "Código";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(291, 305);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 20);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "Número";
+            // 
+            // textNumero
+            // 
+            this.textNumero.Location = new System.Drawing.Point(295, 337);
+            this.textNumero.Name = "textNumero";
+            this.textNumero.Size = new System.Drawing.Size(103, 26);
+            this.textNumero.TabIndex = 21;
+            this.textNumero.TextChanged += new System.EventHandler(this.textNumero_TextChanged);
+            // 
             // frmFuncionarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -372,7 +394,7 @@ namespace MultJogos
             this.Controls.Add(this.pnlCRUD);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimizeBox = false;
+            this.MaximizeBox = false;
             this.Name = "frmFuncionarios";
             this.Text = "Funcionarios";
             this.pnlCRUD.ResumeLayout(false);
@@ -413,5 +435,7 @@ namespace MultJogos
         private System.Windows.Forms.Label lblEstado;
         private System.Windows.Forms.Label lblCidade;
         private System.Windows.Forms.TextBox txtCidade;
+        private System.Windows.Forms.TextBox textNumero;
+        private System.Windows.Forms.Label label1;
     }
 }
