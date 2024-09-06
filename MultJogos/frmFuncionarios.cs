@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace MultJogos
 {
@@ -15,11 +16,16 @@ namespace MultJogos
         public frmFuncionarios()
         {
             InitializeComponent();
+            //executando o método desabilitar campos
+            desabilitarCampos();
         }
+        //IntPtr hMenu = GetSystemMenu(this.Handle, false);
+        //int MenuCount = GetMenuItemCount(hMenu) - 1;
+        //RemoveMenu(hMenu, MenuCount, MF_BYCOMMAND);
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+           
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -47,6 +53,93 @@ namespace MultJogos
             frmMenuPrincipal abrir = new frmMenuPrincipal();
             abrir.Show();
             this.Hide();
+        }
+
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            frmPesquisar abrir = new frmPesquisar();
+            abrir.Show();
+        }
+        //método para desabilitar os campos e botões
+        public void desabilitarCampos()
+        {
+            textCodigo.Enabled = false;
+            textEndereco.Enabled = false;
+            textNome.Enabled = false;
+            txtEmail.Enabled = false;
+            textBairro.Enabled = false;
+            txtCidade.Enabled = false;
+            mskCEP.Enabled = false;
+            mskCPF.Enabled = false;
+            mskTelefone.Enabled = false;
+            cbbEstado.Enabled = false;
+            btnAlterar.Enabled = false;
+            btnExcluir.Enabled = false;
+           // btnCadastrar.Enabled = false;
+        } //método para habilitar os campos e botões
+        public void habilitarCampos()
+        {
+            textCodigo.Enabled = true;
+            textEndereco.Enabled = true;
+            textNome.Enabled = true;
+            txtEmail.Enabled = true;
+            textBairro.Enabled = true;
+            txtCidade.Enabled = true;
+            mskCEP.Enabled = true;
+            mskCPF.Enabled = true;
+            mskTelefone.Enabled = true;
+            cbbEstado.Enabled = true;
+            //btnAlterar.Enabled = false;
+            btnLimpar.Enabled = true;
+            btnCadastrar.Enabled = true;
+
+            textNome.Focus();
+        }
+          //método para limpar campos
+          public void limparCampos()
+        {
+            textCodigo.Clear();
+            textEndereco.Clear();
+            textNome.Clear();
+            txtEmail.Clear();
+            textBairro.Clear();
+            txtCidade.Clear();
+            mskCEP.Clear();
+            mskCPF.Clear();
+            mskTelefone.Clear();
+            cbbEstado.Text = "";
+            btnAlterar.Enabled = false;
+            btnExcluir.Enabled = false;
+            btnLimpar.Enabled = false;
+            btnCadastrar.Enabled = false;
+
+        } 
+
+        private void btnNovo_Click(object sender, EventArgs e)
+        {
+            habilitarCampos();
+            btnNovo.Enabled = false;
+        }
+
+        private void btnCadastrar_Click(object sender, EventArgs e)
+        {
+            if (textNome.Text.Equals("")|| txtEmail.Text.Equals("")
+                || textEndereco.Text.Equals("")
+                || textBairro.Text.Equals("")
+                || txtCidade.Text.Equals("")
+                || mskCEP.Text.Equals("     ")
+                || mskCPF.Text.Equals("   .   .   -")  
+                || mskTelefone.Text.Equals("     - ")
+                || cbbEstado.Text.Equals(""))
+            {
+                MessageBox.Show("Não deixar campos vazios.");
+                textNome.Focus();
+            }
+            else
+            {
+                MessageBox.Show("Cadastrado com sucesso!!!");
+                desabilitarCampos();
+            }
         }
     }
 }

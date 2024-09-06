@@ -52,7 +52,7 @@ namespace MultJogos
             this.lblTelefone = new System.Windows.Forms.Label();
             this.mskTelefone = new System.Windows.Forms.MaskedTextBox();
             this.lblCPF = new System.Windows.Forms.Label();
-            this.mTBCPF = new System.Windows.Forms.MaskedTextBox();
+            this.mskCPF = new System.Windows.Forms.MaskedTextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
             this.textNome = new System.Windows.Forms.TextBox();
@@ -114,6 +114,7 @@ namespace MultJogos
             this.btnPesquisar.Text = "&Pesquisar";
             this.btnPesquisar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPesquisar.UseVisualStyleBackColor = true;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
             // btnExcluir
             // 
@@ -150,6 +151,7 @@ namespace MultJogos
             this.btnCadastrar.Text = "&Cadastrar";
             this.btnCadastrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCadastrar.UseVisualStyleBackColor = true;
+            this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
             // 
             // btnNovo
             // 
@@ -162,7 +164,7 @@ namespace MultJogos
             this.btnNovo.Text = "&Novo";
             this.btnNovo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnNovo.UseVisualStyleBackColor = true;
-            this.btnNovo.Click += new System.EventHandler(this.button1_Click);
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // gpbFuncionarios
             // 
@@ -179,7 +181,7 @@ namespace MultJogos
             this.gpbFuncionarios.Controls.Add(this.lblTelefone);
             this.gpbFuncionarios.Controls.Add(this.mskTelefone);
             this.gpbFuncionarios.Controls.Add(this.lblCPF);
-            this.gpbFuncionarios.Controls.Add(this.mTBCPF);
+            this.gpbFuncionarios.Controls.Add(this.mskCPF);
             this.gpbFuncionarios.Controls.Add(this.txtEmail);
             this.gpbFuncionarios.Controls.Add(this.lblEmail);
             this.gpbFuncionarios.Controls.Add(this.textNome);
@@ -241,7 +243,7 @@ namespace MultJogos
             // mskCEP
             // 
             this.mskCEP.Location = new System.Drawing.Point(341, 245);
-            this.mskCEP.Mask = "0000000";
+            this.mskCEP.Mask = "00000000";
             this.mskCEP.Name = "mskCEP";
             this.mskCEP.Size = new System.Drawing.Size(140, 26);
             this.mskCEP.TabIndex = 5;
@@ -304,13 +306,13 @@ namespace MultJogos
             this.lblCPF.TabIndex = 7;
             this.lblCPF.Text = "CPF";
             // 
-            // mTBCPF
+            // mskCPF
             // 
-            this.mTBCPF.Location = new System.Drawing.Point(11, 248);
-            this.mTBCPF.Mask = "000,000,000-00";
-            this.mTBCPF.Name = "mTBCPF";
-            this.mTBCPF.Size = new System.Drawing.Size(140, 26);
-            this.mTBCPF.TabIndex = 3;
+            this.mskCPF.Location = new System.Drawing.Point(11, 248);
+            this.mskCPF.Mask = "000,000,000-00";
+            this.mskCPF.Name = "mskCPF";
+            this.mskCPF.Size = new System.Drawing.Size(140, 26);
+            this.mskCPF.TabIndex = 3;
             // 
             // txtEmail
             // 
@@ -401,7 +403,7 @@ namespace MultJogos
         private System.Windows.Forms.Label lblTelefone;
         private System.Windows.Forms.MaskedTextBox mskTelefone;
         private System.Windows.Forms.Label lblCPF;
-        private System.Windows.Forms.MaskedTextBox mTBCPF;
+        private System.Windows.Forms.MaskedTextBox mskCPF;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.TextBox textNome;
