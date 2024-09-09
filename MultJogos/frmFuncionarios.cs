@@ -32,6 +32,14 @@ namespace MultJogos
         //int MenuCount = GetMenuItemCount(hMenu) - 1;
         //RemoveMenu(hMenu, MenuCount, MF_BYCOMMAND);
 
+        public frmFuncionarios(string nome)
+        {
+            InitializeComponent();
+            //executando o método desabilitar campos
+            desabilitarCampos();
+            textNome.Text = nome;
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
 
@@ -68,6 +76,7 @@ namespace MultJogos
         {
             frmPesquisar abrir = new frmPesquisar();
             abrir.Show();
+            this.Hide();
         }
         //método para desabilitar os campos e botões
         public void desabilitarCampos()
@@ -189,7 +198,8 @@ namespace MultJogos
 
         private void textNumero_TextChanged(object sender, EventArgs e)
         {
-          
+            //limpar campos 
+            limparCampos();
         }
     }
 }
