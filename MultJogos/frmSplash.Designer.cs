@@ -29,12 +29,13 @@ namespace MultJogos
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSplash));
             this.lblPorcentagem = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pgbSplash = new System.Windows.Forms.ProgressBar();
             this.pcbLogo = new System.Windows.Forms.PictureBox();
-            this.progressBar2 = new System.Windows.Forms.ProgressBar();
+            this.tmpSplash = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pcbLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,6 +68,7 @@ namespace MultJogos
             this.pgbSplash.Name = "pgbSplash";
             this.pgbSplash.Size = new System.Drawing.Size(282, 26);
             this.pgbSplash.TabIndex = 5;
+            this.pgbSplash.Value = 100;
             // 
             // pcbLogo
             // 
@@ -79,19 +81,17 @@ namespace MultJogos
             this.pcbLogo.TabIndex = 4;
             this.pcbLogo.TabStop = false;
             // 
-            // progressBar2
+            // tmpSplash
             // 
-            this.progressBar2.Location = new System.Drawing.Point(842, 609);
-            this.progressBar2.Name = "progressBar2";
-            this.progressBar2.Size = new System.Drawing.Size(100, 23);
-            this.progressBar2.TabIndex = 8;
+            this.tmpSplash.Enabled = true;
+            this.tmpSplash.Interval = 1000;
+            this.tmpSplash.Tick += new System.EventHandler(this.tmpSplash_Tick);
             // 
             // frmSplash
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1176, 863);
-            this.Controls.Add(this.progressBar2);
             this.Controls.Add(this.lblPorcentagem);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pgbSplash);
@@ -117,6 +117,6 @@ namespace MultJogos
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ProgressBar pgbSplash;
         private System.Windows.Forms.PictureBox pcbLogo;
-        private System.Windows.Forms.ProgressBar progressBar2;
+        private System.Windows.Forms.Timer tmpSplash;
     }
 }

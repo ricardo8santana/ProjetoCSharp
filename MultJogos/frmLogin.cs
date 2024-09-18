@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using MySql.Data.MySqlClient;
 
 namespace MultJogos
 {
@@ -100,6 +101,16 @@ namespace MultJogos
             {
                 btnEntrar.Focus();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            String conexao = "server=localhost;port=3306;database=dbti112;uid=senacti112;pwd=123456";
+            MySqlConnection conn = new MySqlConnection(conexao);
+            conn.Open();
+            MessageBox.Show("Banco de Dados conectado");
+            conn.Close();
+
         }
     }
 }
