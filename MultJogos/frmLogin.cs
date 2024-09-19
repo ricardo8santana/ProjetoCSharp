@@ -105,11 +105,18 @@ namespace MultJogos
 
         private void button1_Click(object sender, EventArgs e)
         {
-            String conexao = "server=localhost;port=3306;database=dbti112;uid=senacti112;pwd=123456";
-            MySqlConnection conn = new MySqlConnection(conexao);
-            conn.Open();
+            //String conexao = "server=localhost;port=3306;database=dbti112;uid=senacti112;pwd=123456";
+            //MySqlConnection conn = new MySqlConnection(conexao);
+            //conn.Open();
+            Conexao.obterConexao();
             MessageBox.Show("Banco de Dados conectado");
-            conn.Close();
+            Conexao.fecharConexao();
+            //conn.Close();
+
+        }
+
+        private void btnConectar_Cick(object sender, EventArgs e)
+        {
 
         }
     }
