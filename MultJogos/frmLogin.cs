@@ -43,6 +43,27 @@ namespace MultJogos
             //this.Close();
             Application.Exit();
         }
+        //Criar o método para acessar atraves do bd
+        public bool acessarLogin(string nome, string senha)
+        {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "select * from tbUsuarios where nome = @nome and senha = @senha;";
+            comm.CommandType = CommandType.Text;
+
+            comm.Parameters.Clear();
+            comm.Parameters.Add("@nome", MySqlDbType.VarChar, 30).Value = nome;
+            comm.Parameters.Add("@senha", MySqlDbType.VarChar, 20).Value = senha;
+
+            comm.Connection = Conexao.obterConexao();
+            MySqlDataReader DR;
+
+            DR = comm.ExecuteReader();
+            bool resultado = DR.HasRows;
+
+            Conexao.fecharConexao();
+
+            return resultado;
+        }
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
@@ -54,7 +75,7 @@ namespace MultJogos
             senha = textSenha.Text;
 
             //validando a entrada do usuário
-             if (usuario.Equals("senac")&&senha.Equals("senac"))
+             if (acessarLogin(usuario, senha))
             {
                 //entrar no sistema
                 frmMenuPrincipal abrir = new frmMenuPrincipal();
@@ -115,9 +136,5 @@ namespace MultJogos
 
         }
 
-        private void btnConectar_Cick(object sender, EventArgs e)
-        {
-
-        }
     }
 }
