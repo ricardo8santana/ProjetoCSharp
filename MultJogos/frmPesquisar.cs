@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace MultJogos
 {
@@ -24,7 +25,23 @@ namespace MultJogos
         {
 
         }
+        // pesquisar por nome
+        public void pesquisarPorCodigo(int codigo)
+        {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "";
+            comm.CommandType = CommandType.Text;
 
+            comm.Parameters.Clear();
+            comm.Connection = Conexao.obterConexao();
+            Conexao.fecharConexao();
+        }
+        public void pesquisaPorNome(string nome)
+        {
+
+        }
+
+        //pesquisar por nome
         private void ltbPesquisar_SelectedIndexChanged(object sender, EventArgs e)
         {
             string nome = ltbPesquisar.SelectedItem.ToString();
