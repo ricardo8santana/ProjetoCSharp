@@ -212,6 +212,7 @@ namespace MultJogos
                 textBairro.Text = endereco.Bairro;
                 txtCidade.Text = endereco.Localidade;
                 cbbEstado.Text = endereco.UF;
+                textNumero.Text = endereco.Complemento;
             }
             catch (Exception)
             {
@@ -226,6 +227,7 @@ namespace MultJogos
             if (e.KeyCode == Keys.Enter)
             {
                 buscarCEP(mskCEP.Text);
+                mskCEP.Focus();
                 textNumero.Focus();
             }
             //else

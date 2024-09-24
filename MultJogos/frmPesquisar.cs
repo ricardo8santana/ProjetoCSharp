@@ -29,16 +29,49 @@ namespace MultJogos
         public void pesquisarPorCodigo(int codigo)
         {
             MySqlCommand comm = new MySqlCommand();
-            comm.CommandText = "";
+            comm.CommandText = "select * from tbFuncionarios where codFunc = @codFunc;";
             comm.CommandType = CommandType.Text;
 
             comm.Parameters.Clear();
+            comm.Parameters.Add("@codFunc", MySqlDbType.Int64).Value = codigo;
+
             comm.Connection = Conexao.obterConexao();
+
+            MySqlDataReader DR;
+
+            DR = comm.ExecuteReader();
+            //ltbPesquisar.Items.Clear();
+
+            while (DR.Read())
+            {
+                ltbPesquisar.Items.Add(DR.GetString(1));
+            }
+
+
             Conexao.fecharConexao();
         }
         public void pesquisaPorNome(string nome)
         {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "select * from tbFuncionarios where nome like '%"+nome+"%';";
+            comm.CommandType = CommandType.Text;
 
+            comm.Parameters.Clear();
+
+            comm.Parameters.Add("@nome", MySqlDbType.VarChar, 50).Value = nome;
+
+            comm.Connection = Conexao.obterConexao();
+
+            MySqlDataReader DR;
+
+            DR = comm.ExecuteReader();
+
+            while (DR.Read())
+            {
+                ltbPesquisar.Items.Add(DR.GetString(1));
+            }
+
+            Conexao.fecharConexao();
         }
 
         //pesquisar por nome
@@ -52,18 +85,20 @@ namespace MultJogos
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
-            if (rdbCodigo.Checked || rdbNome.Checked)
-            {
-                ltbPesquisar.Items.Clear();
-                ltbPesquisar.Items.Add(txtDescricao.Text);
-                
-             
-               // MessageBox.Show("Selecionado");
-            }
-            else
-            {
-                //MessageBox.Show("Não Selecionado");
-            }
+            //if (rdbCodigo.Checked || rdbNome.Checked)
+            //{
+            //    ltbPesquisar.Items.Clear();
+            //    ltbPesquisar.Items.Add(txtDescricao.Text);
+
+
+            //    MessageBox.Show("Selecionado");
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Não Selecionado");
+            //}
+            //pesquisarPorCodigo(Convert.ToInt32(txtDescricao.Text));
+            pesquisaPorNome(txtDescricao.Text);
         }
         //Criando o método limpar
         public void limparCampos()
