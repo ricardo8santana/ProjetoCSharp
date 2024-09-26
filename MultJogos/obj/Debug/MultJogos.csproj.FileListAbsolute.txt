@@ -50,3 +50,4 @@ C:\Users\luis.rsantana\Documents\Visual Studio 2019\EmpresaTI112\MultJogos\bin\D
 C:\Users\luis.rsantana\Documents\Visual Studio 2019\EmpresaTI112\MultJogos\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\luis.rsantana\Documents\Visual Studio 2019\EmpresaTI112\MultJogos\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\luis.rsantana\Documents\Visual Studio 2019\EmpresaTI112\MultJogos\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\luis.rsantana\Documents\Visual Studio 2019\EmpresaTI112\MultJogos\obj\Debug\MultJogos.frmUsuarios.resources

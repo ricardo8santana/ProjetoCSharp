@@ -39,6 +39,7 @@ namespace MultJogos
             //executando o método desabilitar campos
             desabilitarCampos();
             textNome.Text = nome;
+            pesquisarFuncionario(textNome.Text);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -82,7 +83,7 @@ namespace MultJogos
         //método para desabilitar os campos e botões
         public void desabilitarCampos()
         {
-            textCodigo.Enabled = false;
+            txtCodigo.Enabled = false;
             textEndereco.Enabled = false;
             textNome.Enabled = false;
             txtEmail.Enabled = false;
@@ -95,16 +96,18 @@ namespace MultJogos
             btnAlterar.Enabled = false;
             btnExcluir.Enabled = false;
             textNumero.Enabled = false;
-            // btnCadastrar.Enabled = false;
-        } //método para habilitar os campos e botões
+             btnCadastrar.Enabled = false;
+        } 
+        //método para habilitar os campos e botões
         public void habilitarCampos()
         {
-            textCodigo.Enabled = true;
+            txtCodigo.Enabled = true;
             textEndereco.Enabled = true;
             textNome.Enabled = true;
             txtEmail.Enabled = true;
             textBairro.Enabled = true;
             txtCidade.Enabled = true;
+            textNumero.Enabled = true;
             mskCEP.Enabled = true;
             mskCPF.Enabled = true;
             mskTelefone.Enabled = true;
@@ -112,14 +115,14 @@ namespace MultJogos
             //btnAlterar.Enabled = false;
             btnLimpar.Enabled = true;
             btnCadastrar.Enabled = true;
-            textNumero.Enabled = true;
+            
 
             textNome.Focus();
         }
         //método para limpar campos
         public void limparCampos()
         {
-            textCodigo.Clear();
+            txtCodigo.Clear();
             textEndereco.Clear();
             textNome.Clear();
             txtEmail.Clear();
@@ -134,7 +137,29 @@ namespace MultJogos
             btnExcluir.Enabled = false;
             btnLimpar.Enabled = false;
             btnCadastrar.Enabled = false;
+            btnNovo.Enabled = true;
 
+
+        }
+        public void habilitarCamposPesquisar()
+        {
+            txtCodigo.Enabled = false;
+            textEndereco.Enabled = true;
+            textNome.Enabled = true;
+            txtEmail.Enabled = true;
+            textBairro.Enabled = true;
+            txtCidade.Enabled = true;
+            textNumero.Enabled = true;
+            mskCEP.Enabled = true;
+            mskCPF.Enabled = true;
+            mskTelefone.Enabled = true;
+            cbbEstado.Enabled = true;
+            btnAlterar.Enabled = true;
+            btnExcluir.Enabled = true;
+            btnLimpar.Enabled = true;
+            btnNovo.Enabled = false;
+            btnCadastrar.Enabled = false;
+            textNome.Focus();
         }
 
         private void btnNovo_Click(object sender, EventArgs e)
@@ -169,6 +194,66 @@ namespace MultJogos
             int res = comm.ExecuteNonQuery();
             return res;
             Conexao.fecharConexao();
+        }
+
+        public int alterarFuncionarios(int codFunc)
+        {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "update tbFuncionarios set nome=@nome, email=@email, cpf=@cpf, telCel=@telCel, cep=@cep, endereco=@endereco, numero=@numero, bairro=@bairro, cidade=@cidade, estado=@estado where codFunc = @codFunc;";
+            comm.CommandType = CommandType.Text;
+
+            comm.Parameters.Clear();
+
+            comm.Parameters.Add("@nome", MySqlDbType.VarChar, 50).Value = textNome.Text;
+            comm.Parameters.Add("@email", MySqlDbType.VarChar, 100).Value = txtEmail.Text;
+            comm.Parameters.Add("@cpf", MySqlDbType.VarChar, 14).Value = mskCPF.Text;
+            comm.Parameters.Add("@telCel", MySqlDbType.VarChar, 10).Value = mskTelefone.Text;
+            comm.Parameters.Add("@cep", MySqlDbType.VarChar, 10).Value = mskCEP.Text;
+            comm.Parameters.Add("@endereco", MySqlDbType.VarChar, 100).Value = textEndereco.Text;
+            comm.Parameters.Add("@numero", MySqlDbType.VarChar, 5).Value = textNumero.Text;
+            comm.Parameters.Add("@bairro", MySqlDbType.VarChar, 100).Value = textBairro.Text;
+            comm.Parameters.Add("@cidade", MySqlDbType.VarChar, 100).Value = txtCidade.Text;
+            comm.Parameters.Add("@Estado", MySqlDbType.Int32, 11).Value = Convert.ToInt32(codFunc);
+            //comm.Parameters.Add("@codFunc", MySqlDbType.Int32, 11).Value = Convert.ToInt32(codFunc);
+
+            comm.Connection = Conexao.obterConexao();
+
+            int res = comm.ExecuteNonQuery();
+            return res;
+            Conexao.fecharConexao();
+        }
+
+        //pesquisar por nome do funcionarios
+        public void pesquisarFuncionario(string nome)
+        {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "select * from tbFuncionarios where nome= @nome;";
+            comm.CommandType = CommandType.Text;
+
+            comm.Parameters.Clear();
+            comm.Parameters.Add("@nome", MySqlDbType.VarChar, 30).Value = nome;
+            comm.Connection = Conexao.obterConexao();
+
+            MySqlDataReader DR;
+
+            DR = comm.ExecuteReader();
+            DR.Read();
+
+            txtCodigo.Text = DR.GetInt32(0).ToString();
+            textNome.Text = DR.GetString(1);
+            txtEmail.Text = DR.GetString(2);
+            mskCPF.Text = DR.GetString(3);
+            mskTelefone.Text = DR.GetString(4);
+            mskCEP.Text = DR.GetString(5);
+            textEndereco.Text = DR.GetString(6);
+            textNumero.Text = DR.GetString(7);
+            textBairro.Text = DR.GetString(8);
+            txtCidade.Text = DR.GetString(9);
+            cbbEstado.Text = DR.GetString(10);
+
+            Conexao.fecharConexao();
+
+            habilitarCamposPesquisar();
         }
 
         private void btnCadastrar_Click(object sender, EventArgs e)
@@ -240,6 +325,63 @@ namespace MultJogos
         private void textNumero_TextChanged(object sender, EventArgs e)
         {
             //limpar campos 
+            limparCampos();
+        }
+
+        private void btnAlterar_Click(object sender, EventArgs e)
+        {
+          int res = alterarFuncionarios(Convert.ToInt32(txtCodigo.Text));
+            if (res ==1)
+            {
+                MessageBox.Show("Alterado com sucesso!!");
+                desabilitarCampos();
+                limparCampos();
+            }
+            else
+            {
+                MessageBox.Show("Erro ao Alterar!!");
+            }
+        }
+        //criando o boitão excluir
+        public int excluirFuncionario(int codFunc)
+        {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "delete from tbFuncionarios where codFunc = @codFunc;";
+            comm.CommandType = CommandType.Text;
+
+            comm.Parameters.Clear();
+            comm.Parameters.Add("@codfunc", MySqlDbType.Int32, 11).Value = codFunc;
+
+            comm.Connection = Conexao.obterConexao();
+
+
+            int res = comm.ExecuteNonQuery();
+
+            return res;
+
+            Conexao.fecharConexao();
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Deseja excluir?",
+                "Sistema", MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
+            if (result == DialogResult.OK)
+            {
+                excluirFuncionario(Convert.ToInt32(txtCodigo.Text));
+                limparCampos();
+                desabilitarCampos();
+            }
+            else
+            {
+                textNome.Focus();
+            }
+        }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            //limpando os campos preenchidos
             limparCampos();
         }
     }

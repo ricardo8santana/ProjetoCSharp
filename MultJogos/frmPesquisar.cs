@@ -98,7 +98,22 @@ namespace MultJogos
             //    MessageBox.Show("Não Selecionado");
             //}
             //pesquisarPorCodigo(Convert.ToInt32(txtDescricao.Text));
-            pesquisaPorNome(txtDescricao.Text);
+            if (rdbCodigo.Checked)
+            {
+                if (txtDescricao.Text != "")
+                {
+                    pesquisarPorCodigo(Convert.ToInt32(txtDescricao.Text));
+                }
+                
+            }
+            if (rdbNome.Checked)
+            {
+                if (txtDescricao.Text != "")
+                {
+                    pesquisaPorNome(txtDescricao.Text);
+                }
+            }
+       
         }
         //Criando o método limpar
         public void limparCampos()
