@@ -101,7 +101,7 @@ namespace MultJogos
         //método para habilitar os campos e botões
         public void habilitarCampos()
         {
-            txtCodigo.Enabled = true;
+            //txtCodigo.Enabled = true;
             textEndereco.Enabled = true;
             textNome.Enabled = true;
             txtEmail.Enabled = true;
@@ -116,7 +116,6 @@ namespace MultJogos
             btnLimpar.Enabled = true;
             btnCadastrar.Enabled = true;
             
-
             textNome.Focus();
         }
         //método para limpar campos
@@ -325,7 +324,7 @@ namespace MultJogos
         private void textNumero_TextChanged(object sender, EventArgs e)
         {
             //limpar campos 
-            limparCampos();
+            //limparCampos();
         }
 
         private void btnAlterar_Click(object sender, EventArgs e)

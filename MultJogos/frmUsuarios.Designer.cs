@@ -30,6 +30,9 @@ namespace MultJogos
         private void InitializeComponent()
         {
             this.gpbDadosPessoais = new System.Windows.Forms.GroupBox();
+            this.lblMostrarCodigo = new System.Windows.Forms.Label();
+            this.cbbFuncionario = new System.Windows.Forms.ComboBox();
+            this.lblFuncionario = new System.Windows.Forms.Label();
             this.lblRepetirSenha = new System.Windows.Forms.Label();
             this.lblSenha = new System.Windows.Forms.Label();
             this.lblUsuario = new System.Windows.Forms.Label();
@@ -50,6 +53,9 @@ namespace MultJogos
             // 
             // gpbDadosPessoais
             // 
+            this.gpbDadosPessoais.Controls.Add(this.lblMostrarCodigo);
+            this.gpbDadosPessoais.Controls.Add(this.cbbFuncionario);
+            this.gpbDadosPessoais.Controls.Add(this.lblFuncionario);
             this.gpbDadosPessoais.Controls.Add(this.lblRepetirSenha);
             this.gpbDadosPessoais.Controls.Add(this.lblSenha);
             this.gpbDadosPessoais.Controls.Add(this.lblUsuario);
@@ -64,6 +70,34 @@ namespace MultJogos
             this.gpbDadosPessoais.TabStop = false;
             this.gpbDadosPessoais.Text = "Dados pessoais";
             this.gpbDadosPessoais.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // lblMostrarCodigo
+            // 
+            this.lblMostrarCodigo.AutoSize = true;
+            this.lblMostrarCodigo.Location = new System.Drawing.Point(446, 169);
+            this.lblMostrarCodigo.Name = "lblMostrarCodigo";
+            this.lblMostrarCodigo.Size = new System.Drawing.Size(113, 20);
+            this.lblMostrarCodigo.TabIndex = 8;
+            this.lblMostrarCodigo.Text = "MostrarCodigo";
+            this.lblMostrarCodigo.Click += new System.EventHandler(this.lblMostrarCodigo_Click);
+            // 
+            // cbbFuncionario
+            // 
+            this.cbbFuncionario.FormattingEnabled = true;
+            this.cbbFuncionario.Location = new System.Drawing.Point(442, 63);
+            this.cbbFuncionario.Name = "cbbFuncionario";
+            this.cbbFuncionario.Size = new System.Drawing.Size(185, 28);
+            this.cbbFuncionario.TabIndex = 7;
+            this.cbbFuncionario.SelectedIndexChanged += new System.EventHandler(this.cbbFuncionario_SelectedIndexChanged);
+            // 
+            // lblFuncionario
+            // 
+            this.lblFuncionario.AutoSize = true;
+            this.lblFuncionario.Location = new System.Drawing.Point(438, 40);
+            this.lblFuncionario.Name = "lblFuncionario";
+            this.lblFuncionario.Size = new System.Drawing.Size(92, 20);
+            this.lblFuncionario.TabIndex = 6;
+            this.lblFuncionario.Text = "Funcionario";
             // 
             // lblRepetirSenha
             // 
@@ -122,75 +156,90 @@ namespace MultJogos
             this.pnlUsuarios.Controls.Add(this.btnAlterar);
             this.pnlUsuarios.Controls.Add(this.btnCadastrar);
             this.pnlUsuarios.Controls.Add(this.btnNovo);
-            this.pnlUsuarios.Location = new System.Drawing.Point(12, 338);
+            this.pnlUsuarios.Location = new System.Drawing.Point(12, 368);
             this.pnlUsuarios.Name = "pnlUsuarios";
-            this.pnlUsuarios.Size = new System.Drawing.Size(744, 100);
+            this.pnlUsuarios.Size = new System.Drawing.Size(753, 120);
             this.pnlUsuarios.TabIndex = 1;
             // 
             // btnVoltar
             // 
             this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoltar.Location = new System.Drawing.Point(632, 39);
+            this.btnVoltar.Image = global::MultJogos.Properties.Resources.sair;
+            this.btnVoltar.Location = new System.Drawing.Point(648, 39);
             this.btnVoltar.Name = "btnVoltar";
-            this.btnVoltar.Size = new System.Drawing.Size(93, 42);
+            this.btnVoltar.Size = new System.Drawing.Size(94, 42);
             this.btnVoltar.TabIndex = 6;
             this.btnVoltar.Text = "&Voltar";
+            this.btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnVoltar.UseVisualStyleBackColor = true;
+            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
             // btnLimpar
             // 
             this.btnLimpar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpar.Location = new System.Drawing.Point(524, 39);
+            this.btnLimpar.Image = global::MultJogos.Properties.Resources.limpar;
+            this.btnLimpar.Location = new System.Drawing.Point(536, 39);
             this.btnLimpar.Name = "btnLimpar";
-            this.btnLimpar.Size = new System.Drawing.Size(93, 42);
+            this.btnLimpar.Size = new System.Drawing.Size(106, 42);
             this.btnLimpar.TabIndex = 5;
             this.btnLimpar.Text = "&Limpar";
+            this.btnLimpar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnLimpar.UseVisualStyleBackColor = true;
             // 
             // btnPesquisar
             // 
             this.btnPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPesquisar.Location = new System.Drawing.Point(421, 39);
+            this.btnPesquisar.Image = global::MultJogos.Properties.Resources.pesquisar;
+            this.btnPesquisar.Location = new System.Drawing.Point(408, 39);
             this.btnPesquisar.Name = "btnPesquisar";
-            this.btnPesquisar.Size = new System.Drawing.Size(93, 42);
+            this.btnPesquisar.Size = new System.Drawing.Size(122, 42);
             this.btnPesquisar.TabIndex = 4;
             this.btnPesquisar.Text = "&Pesquisar";
+            this.btnPesquisar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPesquisar.UseVisualStyleBackColor = true;
             // 
             // btnExcluir
             // 
             this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcluir.Location = new System.Drawing.Point(322, 39);
+            this.btnExcluir.Image = global::MultJogos.Properties.Resources.excluir;
+            this.btnExcluir.Location = new System.Drawing.Point(313, 39);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(93, 42);
             this.btnExcluir.TabIndex = 3;
             this.btnExcluir.Text = "&Excluir";
+            this.btnExcluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExcluir.UseVisualStyleBackColor = true;
             // 
             // btnAlterar
             // 
             this.btnAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAlterar.Location = new System.Drawing.Point(228, 39);
+            this.btnAlterar.Image = global::MultJogos.Properties.Resources.alterar;
+            this.btnAlterar.Location = new System.Drawing.Point(215, 39);
             this.btnAlterar.Name = "btnAlterar";
-            this.btnAlterar.Size = new System.Drawing.Size(93, 42);
+            this.btnAlterar.Size = new System.Drawing.Size(101, 42);
             this.btnAlterar.TabIndex = 2;
             this.btnAlterar.Text = "&Alterar";
+            this.btnAlterar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAlterar.UseVisualStyleBackColor = true;
             // 
             // btnCadastrar
             // 
             this.btnCadastrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCadastrar.Location = new System.Drawing.Point(135, 39);
+            this.btnCadastrar.Image = global::MultJogos.Properties.Resources.cadastrar;
+            this.btnCadastrar.Location = new System.Drawing.Point(94, 39);
             this.btnCadastrar.Name = "btnCadastrar";
-            this.btnCadastrar.Size = new System.Drawing.Size(93, 42);
+            this.btnCadastrar.Size = new System.Drawing.Size(120, 42);
             this.btnCadastrar.TabIndex = 1;
             this.btnCadastrar.Text = "&Cadastrar";
+            this.btnCadastrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCadastrar.UseVisualStyleBackColor = true;
+            this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
             // 
             // btnNovo
             // 
             this.btnNovo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNovo.Location = new System.Drawing.Point(37, 39);
+            this.btnNovo.Image = global::MultJogos.Properties.Resources._new;
+            this.btnNovo.Location = new System.Drawing.Point(4, 39);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(93, 42);
             this.btnNovo.TabIndex = 0;
@@ -231,5 +280,8 @@ namespace MultJogos
         private System.Windows.Forms.Button btnAlterar;
         private System.Windows.Forms.Button btnCadastrar;
         private System.Windows.Forms.Button btnNovo;
+        private System.Windows.Forms.ComboBox cbbFuncionario;
+        private System.Windows.Forms.Label lblFuncionario;
+        private System.Windows.Forms.Label lblMostrarCodigo;
     }
 }
